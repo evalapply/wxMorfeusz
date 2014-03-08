@@ -35,5 +35,5 @@ encodings/morfeusz_encoding.txt encodings/tab-cp1250.cc \
 encodings/tab-cp852.cc encodings/tab-latin2.cc \
 encodings/tab-unicode.cc encodings/unicode-tab.pl formy_opis.hh \
 getversions masujslownik r_segmenty.dat r_typy-leksemow.dat \
-r_typy-tagow.dat result.hh robsegmenty segmenty_opis.hh
+r_typy-tagow.dat result.hh robsegmenty segmenty_opis.hh wxMorfeusz.cpp
 

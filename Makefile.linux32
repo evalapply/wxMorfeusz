@@ -7,6 +7,7 @@ LIBMORFVERSIONED = $(LIBMORFFLAV).$(MAJOR).$(MINOR)
 LIBFILES = $(LIBMORFVERSIONED) $(LIBMORF).$(MAJOR) $(LIBMORF)
 
 PROG = morfeusz
+WXPROG = wxMorfeusz
 
 OPTFLAGS = -I$(SRCDIR) -I$(SRCDIR)/encodings -I$(SRCDIR)/dfabuilder -s -Wall -O2 
 CXXFLAGS = $(OPTFLAGS) -fPIC -Wno-write-strings 
@@ -21,3 +22,5 @@ $(LIBMORFVERSIONED): $(OBJECTS)
 $(PROG): $(SRCDIR)/client.cc $(SRCDIR)/morfeusz.h
 	$(CXX) $(OPTFLAGS) -o $@ $< -L./ -lmorfeusz -lreadline
 
+$(WXPROG): $(SRCDIR)/$(WXPROG).cpp $(SRCDIR)/morfeusz.h
+	$(CXX) $(OPTFLAGS) -o $@ $< -L./ -lmorfeusz `wx-config --libs --cxxflags`

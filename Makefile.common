@@ -18,7 +18,7 @@ OBJECTS := $(notdir $(SOURCES:.cc=.o))
 
 ARCHIVE = morfeusz-$(FLAVOUR)-$(arch)-$(shell date +%Y%m%d)
 
-all: lib $(PROG)
+all: lib $(PROG) $(WXPROG)
 
 lib: $(LIBMORFVERSIONED)
 
@@ -72,14 +72,14 @@ segmenty$(FLAVOUR).o: $(addprefix $(SRCDIR)/, dfabuilder/fsa.hh encoded.hh  segm
 
 dist: $(SRCDIR)/$(ARCHIVE).tar.bz2
 
-$(SRCDIR)/$(ARCHIVE).tar.bz2: $(LIBMORFVERSIONED) $(PROG)
-	tar cvf $(SRCDIR)/$(ARCHIVE).tar $(LIBFILES) $(PROG) 
+$(SRCDIR)/$(ARCHIVE).tar.bz2: $(LIBMORFVERSIONED) $(PROG) $(WXPROG)
+	tar cvf $(SRCDIR)/$(ARCHIVE).tar $(LIBFILES) $(PROG) $(WXPROG)
 	bash -c "cd ..; tar rvf $(ARCHIVE).tar morfeusz.h README CZYTAJTO"
 	bzip2 -f $(SRCDIR)/$(ARCHIVE).tar
 
 
 clean:
-	-rm $(OBJECTS) $(LIBFILES) $(PROG)
+	-rm $(OBJECTS) $(LIBFILES) $(PROG) $(WXPROG)
 
 deepclean: clean
 	-rm $(SRCDIR)/formy$(FLAVOUR).encoded $(SRCDIR)/formy$(FLAVOUR).dfa \
